@@ -178,19 +178,24 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     /**
-     * MODIFICATION FINALE : La normalisation supprime maintenant TOUS les espaces.
+     * CORRECTION : Ajout de .replace(/^`|`$/g, '') pour retirer les backticks
+     * des réponses correctes avant la comparaison.
      */
     const questionIsCorrect = (question, userAnswer) => {
         const correctAnswer = question.reponse;
         if (question.type === 'zone_saisie' || question.type === 'saisie_libre') {
             if (userAnswer.length === 0) return false;
             
-            // Normalise une chaîne en supprimant tous les espaces, le point-virgule final et en convertissant en minuscules.
-            const normalize = (str) => str.replace(/\s/g, '').replace(/;$/, '').toLowerCase();
+            // Normalise une chaîne pour la comparaison :
+            // 1. Retire les backticks ` au début/fin
+            // 2. Retire tous les espaces
+            // 3. Retire le point-virgule final
+            // 4. Met en minuscules
+            const normalize = (str) => str.replace(/^`|`$/g, '').replace(/\s/g, '').replace(/;$/, '').toLowerCase();
 
             const userClean = normalize(userAnswer[0]);
             
-            // Permet plusieurs réponses correctes possibles dans le JSON
+            // Permet plusieurs réponses correctes possibles
             return correctAnswer.some(correct => normalize(correct) === userClean);
         }
         if (userAnswer.length !== correctAnswer.length) return false;
