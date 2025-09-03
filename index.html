@@ -2,28 +2,6 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Quiz STI 4SI</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" />
-
-    <style>
-        /* Style simple pour la page de test */
-        body { 
-            background-color: #0f172a; /* bg-slate-900 */
-            font-family: sans-serif;
-            color: white;
-            padding: 2em; 
-        }
-        h1 {
-            border-bottom: 1px solid #475569;
-            padding-bottom: 10px;
-        }
-    </style>
-</head>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Interactif - 4ème SI (STI)</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -34,13 +12,18 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
 
+        /* Style pour le code DANS une phrase (inline) */
         :not(pre) > code {
             background-color: #334155; color: #e2e8f0; padding: 0.2em 0.4em;
             margin: 0 0.2em; font-size: 0.9em; border-radius: 6px;
             font-family: 'Courier New', Courier, monospace;
         }
+
+        /* Style pour le CADRE de code (bloc), géré en partie par prism.css */
         pre[class*="language-"] {
-            margin: 1em 0; border-radius: 8px; border: 1px solid #10b981;
+            margin: 1em 0;
+            border-radius: 8px;
+            border: 1px solid #10b981; /* border-emerald-500 */
             font-size: 0.9em;
         }
     </style>
@@ -48,10 +31,11 @@
 <body class="bg-slate-900 text-white flex items-center justify-center min-h-screen py-8">
 
     <div class="container mx-auto p-4 md:p-8 max-w-3xl">
+
         <section id="home-screen" class="text-center">
             <img src="logo.png" alt="Logo du projet Quiz STI" class="mx-auto mb-6 max-h-40">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-emerald-400">Quiz STI - 4ème Info</h1>
-            <p class="text-lg text-slate-300 mb-8">Testez vos connaissances sur les points  clés du programme.</p>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-emerald-400">Quiz STI - 4<sub>ème</sub> Siences de l'informatique</h1>
+            <p class="text-lg text-slate-300 mb-8">Testez vos connaissances sur les matières clés du programme.</p>
             <button id="start-config-btn" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-8 rounded-lg text-xl transition-transform transform hover:scale-105">
                 Commencer le Quiz
             </button>
@@ -82,14 +66,17 @@
             <div id="wrong-answers-container"></div>
             <div class="flex justify-center gap-4 mt-8"> <button id="replay-btn" class="bg-emerald-500 hover:bg-emerald-600 font-bold py-3 px-8 rounded-lg">Rejouer</button> <button id="quit-btn" class="bg-slate-600 hover:bg-slate-700 font-bold py-3 px-8 rounded-lg">Quitter</button> </div>
         </section>
+
+        <footer class="text-center text-slate-500 text-sm mt-12">
+            <address>
+                Créé par Abidi Mohamed Fadhel - 28552707
+            </address>
+        </footer>
+
     </div>
     
-
-    <script src="app.js"></script>
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
-
+    <script src="app.js"></script>
 </body>
 </html>
